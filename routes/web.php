@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'All cats';
+});
+
+Route::get('/cats/{id}', function($id){
+    return 'cat: ' . $id;
+})->where('id', '[0-9]+');
+
+Route::get('/about', function(){
+  $number = 100;
+  return view('about')->with('number', $number);
 });
