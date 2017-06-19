@@ -1,4 +1,6 @@
 <?php
+use Furbook\Cat;
+use Furbook\Breed;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +24,15 @@ Route::get('/cats/{id}', function($id){
 Route::get('/about', function(){
   $number = 100;
   return view('about')->with('number', $number);
+});
+
+Route::get('/cats', function(){
+  $cats = Cat::all();
+  return view('cats.index')->with('cats', $cats);
+});
+
+Route::get('cats/breeds/{name}', function($name){
+  $breed = Breed::where('name', $name)->first();
+  $cats = $breed->cats;
+  return view('cats.index')->with(['breed' => $breed, 'cats' => $cats]);
 });
