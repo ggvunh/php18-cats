@@ -10,9 +10,9 @@
       <div class="page-header">
         @yield('header')
       </div>
-      @if (Session::has('succsess'))
+      @if (Session::has('success'))
         <div class="alert alert-success">
-          {{ Sesstion::get('succsess') }}
+          {{ Session::get('success') }}
         </div>
       @endif
       @yield('content')

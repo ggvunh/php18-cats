@@ -1,6 +1,7 @@
 <?php
 use Furbook\Cat;
 use Furbook\Breed;
+use Illuminate\Support\Facades\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,25 +15,23 @@ use Furbook\Breed;
 */
 
 Route::get('/', function () {
-    return 'All cats';
+    return redirect('/cats');
 });
-
-Route::get('/cats/{id}', function($id){
-    return 'cat: ' . $id;
-})->where('id', '[0-9]+');
-
 Route::get('/about', function(){
   $number = 100;
   return view('about')->with('number', $number);
 });
-
-Route::get('/cats', function(){
-  $cats = Cat::all();
-  return view('cats.index')->with('cats', $cats);
-});
-
-Route::get('cats/breeds/{name}', function($name){
-  $breed = Breed::where('name', $name)->first();
-  $cats = $breed->cats;
-  return view('cats.index')->with(['breed' => $breed, 'cats' => $cats]);
-});
+//get overview
+Route::get('/cats','CatController@index');
+//get cats by breed
+Route::get('cats/breeds/{name}', 'CatController@showByBeed');
+//create data
+Route::get('cats/create', 'CatController@create');
+Route::post('cats', 'CatController@store');
+//update data
+Route::get('cats/{cat}/edit', 'CatController@edit');
+Route::put('cats/{cat}', 'CatController@update');
+// delete data
+Route::get('cats/{cat}/delete', 'CatController@destroy');
+//show data
+Route::get('/cats/{cat}', 'CatController@show')->where('id', '[0-9]+');
