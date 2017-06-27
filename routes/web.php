@@ -35,3 +35,5 @@ Route::put('cats/{cat}', 'CatController@update');
 Route::get('cats/{cat}/delete', 'CatController@destroy');
 //show data
 Route::get('/cats/{cat}', 'CatController@show')->where('id', '[0-9]+');
+
+Route::resource('photos', 'PhotoController');

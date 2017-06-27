@@ -4,6 +4,7 @@ namespace Furbook\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Furbook\Cat;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -27,6 +28,8 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+        Cat::created(function($cat){
+          \Toastr::info('created '. $cat->name); 
+        });
     }
 }
