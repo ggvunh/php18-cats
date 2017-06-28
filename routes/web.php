@@ -26,10 +26,10 @@ Route::get('/cats','CatController@index');
 //get cats by breed
 Route::get('cats/breeds/{name}', 'CatController@showByBeed');
 //create data
-Route::get('cats/create', 'CatController@create');
+Route::get('cats/create', 'CatController@create')->middleware('auth');
 Route::post('cats', 'CatController@store');
 //update data
-Route::get('cats/{cat}/edit', 'CatController@edit');
+Route::get('cats/{cat}/edit', 'CatController@edit')->middleware(['auth', 'admin']);
 Route::put('cats/{cat}', 'CatController@update');
 // delete data
 Route::get('cats/{cat}/delete', 'CatController@destroy');
@@ -37,3 +37,7 @@ Route::get('cats/{cat}/delete', 'CatController@destroy');
 Route::get('/cats/{cat}', 'CatController@show')->where('id', '[0-9]+');
 
 Route::resource('photos', 'PhotoController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -12,6 +12,19 @@
     {!! Toastr::render() !!}
     <div class="container">
       <div class="page-header">
+        <div class="text-right">
+          @if (Auth::check())
+            Logged in as
+            <strong>{{ Auth::user()->name }}</strong>
+            <form action="/logout" method="post">
+              {{ csrf_field() }}
+              <input type="submit" value="Logout"/>
+            </form>
+          @else
+            {{ link_to('/login', 'Login') }}
+          @endif
+
+        </div>
         @yield('header')
       </div>
       @if (Session::has('success'))

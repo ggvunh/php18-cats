@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cat extends Model
 {
-    protected $fillable = ['name', 'date_of_birth', 'breed_id'];
+    protected $fillable = ['name', 'date_of_birth', 'breed_id', 'user_id'];
 
     public function breed() {
       return $this->belongsTo('Furbook\Breed');

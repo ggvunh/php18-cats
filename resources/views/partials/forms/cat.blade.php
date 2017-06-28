@@ -3,6 +3,11 @@
   <div class="form-controls">
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
   </div>
+  @if ($errors->has('name'))
+      <span class="text-warning">
+          <strong>{{ $errors->first('name') }}</strong>
+      </span>
+  @endif
 </div>
 
 <div class="form-group">
