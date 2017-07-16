@@ -10,8 +10,10 @@ services:
   - mysql
 # execute any number of scripts before the test run, custom env's are available as variables
 before_script:
-  - mysql -e 'CREATE DATABASE forge -uforge;'
-  - composer update
+  - mysql -e 'CREATE DATABASE forge;'
+  - composer self-update
+  - composer install --no-interaction
+  - php artisan key:generate
 
 # omitting "script:" will default to phpunit
 # use the $DB env variable to determine the phpunit.xml to use
