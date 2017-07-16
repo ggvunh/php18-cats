@@ -10,7 +10,7 @@ services:
   - mysql
 # execute any number of scripts before the test run, custom env's are available as variables
 before_script:
-  - mysql -e 'CREATE DATABASE forge;'
+  - mysql -e 'CREATE DATABASE forge -uforge;'
   - composer update
 
 # omitting "script:" will default to phpunit
