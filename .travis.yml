@@ -6,11 +6,11 @@ language: php
 php:
   - 7.0
 # optionally specify a list of environments, for example to test different RDBMS
-env:
-  - DB=mysql
+services:
+  - mysql
 # execute any number of scripts before the test run, custom env's are available as variables
 before_script:
-  - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS forge;" -uforge; fi
+  - mysql -e 'CREATE DATABASE forge;'
   - composer update
 
 # omitting "script:" will default to phpunit
