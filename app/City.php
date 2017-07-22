@@ -14,4 +14,9 @@ class City extends Model
     {
         return 'day la code cua b'; 
     }
+
+    public function codeA()
+    {
+      return 'day la code cua A';
+    }
 }
