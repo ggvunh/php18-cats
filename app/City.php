@@ -10,6 +10,11 @@ class City extends Model
 
     protected $table = 'cities';
 
+    public function codeB()
+    {
+        return 'day la code cua b'; 
+    }
+
     public function codeA()
     {
       return 'day la code cua A';
