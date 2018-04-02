@@ -10,6 +10,9 @@ class Product extends Model
 
     public function update()
     {
+        $data = [];
+        $data2 = 1;
+        $data3 = 2;
         return $this->update;
     }
 }
