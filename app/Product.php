@@ -11,6 +11,7 @@ class Product extends Model
     public function update()
     {
         $data = [];
+        $user = $this->getData();
         return $this->update;
     }
 }
